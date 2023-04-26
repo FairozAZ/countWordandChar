@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text and Word Count</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .container{
+            background-color: rgb(3, 35, 39);
+            width: 850px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px auto;
+            text-align: center;
+            padding: 50px 50px 80px;
+            border-radius: 5px;
+        }
+
+        .container h2{
+            font-size: 40px;
+            color: rgb(171, 190, 255);
+        }
+
+        .container textarea{
+            width: 500px;
+            height: 200px;
+            margin: 30px 0 50px;
+            background: none;
+            outline: none;
+            border: 5px solid rgb(171, 190, 255);
+            border-radius: 8px;
+            padding: 10px;
+            color: rgb(171, 190, 255);
+            font-size: 20px;
+        }
+
+        .countBtn{
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            position: relative;
+        }
+
+        .countBtn p{
+            position: absolute;
+            top: -26px;
+            color: rgb(142, 255, 249);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .countBtn #demo1{
+            left: -12px;
+        }
+
+        .countBtn #demo2{
+            right: -70px;
+        }
+
+        .countBtn button{
+            background: none;
+            border: 2px solid rgb(171, 190, 255);
+            color: rgb(171, 190, 255);
+            font-size: 20px;
+            border-radius: 1px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>How to Count Character and Word Using JavaScript</h2>
+        <textarea id="inputValue" placeholder="Type any text"></textarea>
+        <div class="countBtn">
+            <p id="demo1"></p>
+            <p id="demo2"></p>
+            <button onclick="wordCount()">Count Word</button>
+            <button onclick="charCount()">Count Char</button>
+        </div>
+    </div>
+
+<script>
+
+    function wordCount() {
+        let myWord = document.getElementById("inputValue").value;   
+        let wordList = myWord.split(/\s/);
+        let words = wordList.filter(function (element) {
+            return element != "";
+        });
+        let totalWord = myWord.textContent = words.length;
+        document.getElementById('demo1').innerHTML = "Total Word is: " + totalWord;
+    };
+         
+    function charCount(){
+        let myChar = document.getElementById("inputValue").value;  
+        let removeSpace = myChar.replace(/\s/g, "")
+        let length = removeSpace.length;
+        document.getElementById("demo2").innerHTML = "Total Character is: " + length;
+    }
+
+</script>
+
+</body>
+</html>
